@@ -54,7 +54,7 @@ def extract():
         http_hook = HttpHook(http_conn_id = API_CONN_ID, method = "GET")
         endpoint = (f"v1/forecast?latitude={LATITUDE}&longitude={LONGITUDE}"
             "&daily=temperature_2m_max,temperature_2m_min,precipitation_sum"
-            "&timezone=auto")
+            "&timezone=auto&past_days=1&forecast_days=0")
         response = http_hook.run(endpoint)
         if response.status_code != 200:
                 raise Exception(f"API returned status {response.status_code}")
